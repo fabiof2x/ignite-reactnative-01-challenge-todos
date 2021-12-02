@@ -32,8 +32,8 @@ export function TasksItem({ index, task, toggleTaskDone, removeTask, editTask }:
     setIsEditing(false)
   }
 
-  function handleSubmitEditing(id: number, title: string) {
-    editTask(id, title)
+  function handleSubmitEditing() {
+    editTask(task.id, newTitle)
     setIsEditing(false)
   }
 
@@ -75,7 +75,7 @@ export function TasksItem({ index, task, toggleTaskDone, removeTask, editTask }:
             value={newTitle}
             editable={isEditing}
             onChangeText={setNewTitle}
-            onSubmitEditing={() => handleSubmitEditing(task.id, newTitle)}
+            onSubmitEditing={handleSubmitEditing}
           >
           </TextInput>
         </TouchableOpacity>
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Medium'
   },
   iconsContainer: {
-    flexDirection: "row"
+    flexDirection: 'row',
   },
   iconsDivider: {
     width: 1,
